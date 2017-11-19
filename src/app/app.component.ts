@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './task.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
 
   /*public task: Task = new Task("Create To-Do-List app.", 0);*/
 
-  public tasks: Task[] = [
+  public masterTaskList: Task[] = [
     new Task("Create To-Do List app.", 0),
     new Task("Learn Kung Fu.", 1),
     new Task("Rewatch all the Lord of the Rings movies.", 2),
@@ -23,9 +24,12 @@ export class AppComponent {
   finishedEditing() {
     this.selectedTask = null;
   }
+  addTask(newTaskFromChild: Task) {
+    this.masterTaskList.push(newTaskFromChild);
+  }
 }
 
-export class Task {
-  public done: boolean = false;
-  constructor(public description: string, public id: number) {}
-}
+// export class Task {
+//   public done: boolean = false;
+//   constructor(public description: string, public id: number) {}
+// }
